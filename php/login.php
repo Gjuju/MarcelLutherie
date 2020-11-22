@@ -10,14 +10,14 @@
                         <form method="POST" name="login">
                             <div class="form-group">
                                 <label for="InputEmail1">Email</label>
-                                <input type="email" class="form-control" id="InputEmail1"
+                                <input type="email" class="form-control" name="email" id="InputEmail1"
                                     aria-describedby="emailHelp" placeholder="tintin@milou.org">
                                 <small id="emailHelp" class="form-text text-muted">N'ayez crainte votre email ne sortira
                                     pas de chez nous.</small>
                             </div>
                             <div class="form-group">
                                 <label for="InputPassword1">Mot de passe</label>
-                                <input type="password" class="form-control" id="InputPassword1"
+                                <input type="password" class="form-control" name="mdp" id="InputPassword1"
                                     placeholder="votre mot de passe">
                             </div>
                             <div class="form-group form-check">

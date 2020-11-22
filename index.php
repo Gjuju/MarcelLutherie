@@ -24,6 +24,19 @@
 </head>
 
 <body>
+
+<?php
+$email = "";
+$mdp = "";
+if (isset($_POST['login'])) {
+	$email = strip_tags($_POST['email']);
+    $mdp = strip_tags($_POST['mdp']);
+    echo $email;
+    echo $mdp;
+}
+?>
+
+
     <div class="container-fluid">
 
         <!-- Header avec image -->
@@ -95,6 +108,8 @@
             <div class="row">
                 <div class="col-3">
                     <p class="text-right">Que faisons nous :</p>
+                    <p><?php echo $email; ?></p>
+                    <p><?php echo $mdp; ?></p>
                 </div>
                 <div class="col-8">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea adipisci eum nemo, iusto non
