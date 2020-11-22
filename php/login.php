@@ -7,7 +7,7 @@
                         <h5 class="modal-title" id="ModalLabel">Me connecter</h5>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form method="POST" name="login">
                             <div class="form-group">
                                 <label for="InputEmail1">Email</label>
                                 <input type="email" class="form-control" id="InputEmail1"
@@ -48,7 +48,7 @@
                         <h5 class="modal-title" id="ModalLabel">M'enregistrer</h5>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form method="POST" name="register">
                             <div class="form-group">
                                 <label for="newName">Nom</label>
                                 <input type="text" name="newName" class="form-control" id="newName"
