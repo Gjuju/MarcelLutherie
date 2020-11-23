@@ -25,17 +25,6 @@
 
 <body>
 
-<?php
-$email = "";
-$mdp = "";
-if (isset($_POST['login'])) {
-	$email = strip_tags($_POST['email']);
-    $mdp = strip_tags($_POST['mdp']);
-    echo $email;
-    echo $mdp;
-}
-?>
-
 
     <div class="container-fluid">
 
@@ -78,7 +67,7 @@ if (isset($_POST['login'])) {
                 </li>
                 <!-- Modal login -->
                 <li class="nav-item">
-                    <a class="nav-link" id="login" href="#login">Connexion</a>
+                    <a class="nav-link" id="login" href="#connexion" data-toggle="modal">Connexion</a>
                 </li>
                 <!--<li class="nav-item">
                     <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#connexion">Connexion</button>
@@ -188,6 +177,6 @@ if (isset($_POST['login'])) {
     </div>
 </body>
 <!--<script src="./js/js.js"></script>-->
-<script src="./js/login-register.js"></script>
+<!--<script src="./js/login-register.js"></script>-->
 
 </html>
