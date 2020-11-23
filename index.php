@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="fr">
 
 <head>
@@ -97,8 +100,8 @@
             <div class="row">
                 <div class="col-3">
                     <p class="text-right">Que faisons nous :</p>
-                    <p><?php echo $email; ?></p>
-                    <p><?php echo $mdp; ?></p>
+                    <p></p>
+                    <p></p>
                 </div>
                 <div class="col-8">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea adipisci eum nemo, iusto non
@@ -113,18 +116,7 @@
                         numquam alias, fugit rem necessitatibus doloribus dicta nemo excepturi quibusdam temporibus
                         nostrum. Atque ipsum corrupti nam nihil expedita dolorum doloremque quo architecto, provident
                         culpa earum magnam deleniti ratione aliquam cum natus beatae ut similique veniam laudantium
-                        ipsa? Repudiandae, numquam molestiae quis fuga non neque quasi distinctio! Quibusdam, voluptates
-                        eaque harum assumenda voluptatum numquam placeat ipsa enim? Obcaecati nemo totam tempora ab cum
-                        eligendi, commodi pariatur provident adipisci sed soluta cumque illum? Qui nobis, sunt dolores,
-                        tempora vero, enim saepe eaque perspiciatis laborum laudantium labore placeat odio unde? Ab
-                        doloremque autem qui natus architecto maiores dolor officiis, quo, rem labore officia
-                        perspiciatis sequi eaque optio, provident ipsa laboriosam assumenda maxime. Doloremque, nam.
-                        Impedit, non dolorum inventore iusto ipsum doloribus eaque ratione ab. Tempore ducimus,
-                        excepturi minus expedita incidunt fugit minima dignissimos modi, praesentium voluptatem quae
-                        dolorum facilis et neque, inventore ratione pariatur labore! Aliquid eveniet facere laudantium
-                        eligendi placeat, nam corporis sit autem doloribus, fugiat ullam odit. Accusamus illum porro
-                        minus, explicabo perferendis numquam ipsum natus eveniet beatae reprehenderit corrupti cum quas
-                        voluptatem veniam quae dolorum quaerat culpa.
+                        ipsa? 
                     </p>
                 </div>
                 <div class="col-1">
@@ -169,7 +161,7 @@
 
 
         <?php
-        include "./php/login.php";
+        include "./php/modal.php";
         ?>
 
 
