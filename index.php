@@ -44,10 +44,6 @@ session_start();
             </div>
         </div>
 
-
-
-
-
         <!-- Navbar -->
 
         <div class="navbar navbar-expand-sm bg-dark navbar-dark"><a class="navbar-brand" href="#!">Marcel
@@ -68,16 +64,37 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" href="#!">Contact</a>
                 </li>
+                <?php
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="#!">Admin</a>
+                            </li>';
+                    } 
+                    ?>
+                
+
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
                 <!-- Modal login -->
                 <li class="nav-item">
-                    <a class="nav-link" id="login" href="#connexion" data-toggle="modal">Connexion</a>
+                    <?php 
+                    if (!isset($_SESSION['prenom'])) {
+                        echo '<a class="nav-link" id="login" href="#conlogin" data-toggle="modal">Connexion</a>';
+                    } else {
+                        echo '<a class="nav-link" id="logout" href="#conlogout" data-toggle="modal">Déconnexion</a>';
+                    }
+                    ?>
                 </li>
-                <!--<li class="nav-item">
-                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#connexion">Connexion</button>
-                </li>-->
             </ul>
         </div>
 
+        <div>
+        </div>
+
+
+        <!-- corps de la page -->
         <div class="col-12">
             <div class="row">
                 <div class="col-3">
@@ -144,12 +161,6 @@ session_start();
                             <li>
                                 <a href="#!">Link 2</a>
                             </li>
-                            <li>
-                                <a href="#!">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 4</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -168,7 +179,5 @@ session_start();
 
     </div>
 </body>
-<!--<script src="./js/js.js"></script>-->
-<!--<script src="./js/login-register.js"></script>-->
 
 </html>

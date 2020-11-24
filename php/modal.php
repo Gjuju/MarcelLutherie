@@ -1,9 +1,6 @@
 
-
-
-
 <!-- Modal Login -->
-<div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="conlogin" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <!-- Modal Login content-->
                 <div class="modal-content">
@@ -14,17 +11,17 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" name="login">
+                        <form method="POST" action="./php/login.php" name="login">
                             <div class="form-group">
-                                <label for="emaillog">Email</label>
-                                <input type="email" class="form-control" name="emaillog" id="email"
+                                <label for="logemail">Email</label>
+                                <input type="email" class="form-control" name="logemail" id="logemail"
                                     aria-describedby="emailHelp" placeholder="tintin@milou.org">
                                 <small id="emailHelp" class="form-text text-muted">N'ayez crainte votre email ne sortira
                                     pas de chez nous.</small>
                             </div>
                             <div class="form-group">
-                                <label for="mdplog">Mot de passe</label>
-                                <input type="password" class="form-control" name="mdplog" id="mdplog"
+                                <label for="logpwd">Mot de passe</label>
+                                <input type="password" class="form-control" name="logpwd" id="logpwd"
                                     placeholder="votre mot de passe">
                             </div>
                             <div class="form-group form-check">
@@ -33,9 +30,10 @@
                             </div>
                             <button type="submit" class="btn btn-success">Me connecter</button>
                         </form>
+                        
                     </div>
                     <div class="modal-footer">
-                        <a  data-dismiss="modal" data-toggle="modal" href="#enregistrement">Pas encore enregistré ?</a>
+                        <a  data-dismiss="modal" data-toggle="modal" href="#register">Pas encore enregistré ?</a>
                     </div>
                 </div>
             </div>
@@ -60,8 +58,7 @@
 
 
         <!-- Modal enregistrement -->
-        <div class="modal fade" id="enregistrement" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <!-- Modal enregistrement content-->
                 <div class="modal-content">
@@ -73,48 +70,48 @@
                     </div>
                     
                     <div class="modal-body">
-                        <form method="POST" name="register">
+                        <form method="POST" action="./php/register.php" name="regform">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="newName">Nom</label>
-                                            <input type="text" name="newFName" class="form-control" id="newName"
+                                            <label for="nom">Nom</label>
+                                            <input type="text" name="nom" class="form-control" id="newName"
                                                 aria-describedby="nameHelp" placeholder="Alain">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="newSurname">Prénom</label>
-                                            <input type="text" name="newSurname" class="form-control" id="newSurname"
+                                            <label for="prenom">Prénom</label>
+                                            <input type="text" name="prenom" class="form-control" id="newSurname"
                                                 aria-describedby="nameHelp" placeholder="Martin">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                        <label for="NewAdress">Adresse</label>
-                                        <input type="text" class="form-control" name="NewAdress" placeholder="18 Rue du pont">
+                                        <label for="adresse">Adresse</label>
+                                        <input type="text" name="adresse" class="form-control" placeholder="18 Rue du pont">
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <label for="newcity">Ville</label>
-                                            <input type="text" class="form-control" name="newcity" placeholder="Paris">
+                                            <label for="ville">Ville</label>
+                                            <input type="text" name="ville" class="form-control" placeholder="Paris">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="postcode">Code postal</label>
-                                            <input type="password" class="form-control" name="postcode" placeholder="75000">
+                                            <label for="cp">Code postal</label>
+                                            <input type="text" name="cp" class="form-control" placeholder="75000">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="newEmail">Email</label>
-                                    <input type="email" name="newEmail" class="form-control" id="newEmail"
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="newEmail"
                                         aria-describedby="emailHelp" placeholder="tintin@milou.org">
                                     <small id="emailHelp" class="form-text text-muted">N'ayez crainte, votre email ne
                                         sortira pas de chez nous !</small>
@@ -123,26 +120,26 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="NewPassword">Mot de passe</label>
-                                            <input type="password" class="form-control" id="NewPassword"
+                                            <label for="password">Mot de passe</label>
+                                            <input type="password" name="password" class="form-control" id="NewPassword"
                                                 placeholder="votre mot de passe">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="validePassword">Validez votre de passe</label>
-                                            <input type="password" class="form-control" id="validePassword"
+                                            <label for="verifpassword">Validez votre de passe</label>
+                                            <input type="password" name="verifpassword" class="form-control" id="validePassword"
                                                 placeholder="votre mot de passe">
                                         </div>
                                     </div>
                                 </div>
 
-                            <button type="submit" class="btn btn-success">M'enregistrer'</button>
+                            <button type="submit" class="btn btn-success">M'enregistrer</button>
                         </form>
                     </div>
                     
                     <div class="modal-footer">
-                        <a data-dismiss="modal" data-toggle="modal" href="#connexion">Déjà enregistré ?</a>
+                        <a data-dismiss="modal" data-toggle="modal" href="#conlogin">Déjà enregistré ?</a>
                     </div>
 
                 </div>
@@ -164,7 +161,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <p>Ravis de vous revoir</p>
-                            <p>Nom</p>
+                            <p><?php echo $_SESSION['prenom']; ?></p>
                             <p>vous etes maintenant connecté</p>
                         </div>
                     </div>
@@ -174,6 +171,7 @@
                 </div>
             </div>
         </div>
+
 
 <!-- Modal login fail -->
 <div class="modal fade" id="logFail" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -201,3 +199,30 @@
 
 
         <!-- modal déconnexion -->
+
+        <div class="modal fade" id="conlogout" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <!-- Modal Login content-->
+                <div class="modal-content">
+                <form action="./php/logout.php">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Déconnexion</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <h1><?php echo $_SESSION['prenom']; ?></h1>
+                            <p>Voulez vous vous déconnecter ?</p>
+                            <!--<a href="./php/logout.php">Déconnexion</a>-->
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Se déconnecter</button>
+                </form>    
+                    <div class="modal-footer">
+                        <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-target="#conlogin" aria-label="Close">Recommencer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
