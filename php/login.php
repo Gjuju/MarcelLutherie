@@ -1,7 +1,7 @@
 <?php
     session_start();
     require('./dbconfig.php');
-    if (isset($_POST['logemail'])){
+    if (isset($_POST['login'])){
         $email = stripslashes($_REQUEST['logemail']);
         $email = mysqli_real_escape_string($conn, $email);
         $password = stripslashes($_REQUEST['logpwd']);
@@ -22,12 +22,18 @@
         if($count==1){
             $_SESSION['prenom'] = $prenom;
             $_SESSION['admin'] = $admin;
-            header("Location: ../index.php");
+            echo "tout s'est bien passé.";
+            echo "<script type='text/javascript'>
+                $(document).ready(function(){
+                $('#modlogOk').modal('show');
+                });
+                </script>";
+            
         } else {
             //doit afficher le modal log fail
             echo "Le nom d'utilisateur ou le mot de passe est incorrect.";
-            header("Location: ../index.php");
         }
+        header("Location: ../index.php");
     }
 ?>
 

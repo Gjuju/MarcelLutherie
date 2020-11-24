@@ -4,11 +4,11 @@ require('./dbconfig.php');
 
 if (isset($_POST['regform'])){ // si envoi du formulaire register
     // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
-    $nom = stripslashes($_POST['nom']);
+    $nom = ucwords(stripslashes($_POST['nom']));
     $nom = mysqli_real_escape_string($conn, $nom); 
 
     // récupérer le prenom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
-    $prenom = stripslashes($_POST['prenom']);
+    $prenom = ucwords(stripslashes($_POST['prenom']));
     $prenom = mysqli_real_escape_string($conn, $prenom); 
     
     // récupérer l'email et supprimer les antislashes ajoutés par le formulaire
@@ -24,30 +24,44 @@ if (isset($_POST['regform'])){ // si envoi du formulaire register
     $cp = mysqli_real_escape_string($conn, $cp); 
     
     // récupérer la ville et supprimer les antislashes ajoutés par le formulaire
-    $ville = stripslashes($_POST['ville']);
+    $ville = ucwords(stripslashes($_POST['ville']));
     $ville = mysqli_real_escape_string($conn, $ville);
 
     // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
     $mdp = stripslashes($_POST['password']);
     $mdp = mysqli_real_escape_string($conn, $mdp);
-    //$valmdp = stripslashes($_POST['verifpassword']);
-    //$valmdp = mysqli_real_escape_string($conn, $valmdp);
+    $valmdp = stripslashes($_POST['verifpassword']);
+    $valmdp = mysqli_real_escape_string($conn, $valmdp);
+    //echo $nom.' , '.$prenom.' , '.$email.' , '.$adresse.' , '.$cp.' , '.$ville.' , '.$mdp.'<br>';
     
-    //requéte SQL + mot de passe crypté
-        $requete = "INSERT INTO users (nom, prenom, email, adresse, cp, ville, mdp)
-                VALUES ('$nom', '$prenom', '$email', '$adresse', '$cp', '$ville', '$mdp')";
+    //requéte SQL + mot de passe PAS crypté
+        $requete = "INSERT INTO users (nom, prenom, adresse, email, cp, ville, mdp)
+                VALUES ( '$nom' , '$prenom' , '$adresse' , '$email' , '$cp' , '$ville' , '$mdp')";
         
-    // vérifier que les champs "utiles" sont renseignés puis envoyer
-    
-    // Exécuter la requête sur la base de données
-    $exec_requete = mysqli_query($conn, $requete) or die(mysql_error());
-    if($exec_requete){
-        echo 'sucess';
-        header("Location: ../index.php");
+    // vérifier que les champs "necessaires" sont renseignés puis envoyer
+    if ( $mdp !== $valmdp) {
+        echo "les mots de passes ne correspondent pas !";
+    } else if ( $nom == '' || $prenom == '' || $adresse == '' || $email = '' || $cp == '' || $ville == '' || $mdp == '' ) {
+        echo "un des champs est vide.";
     } else {
-        echo 'ça foire !';
+        // Exécuter la requête sur la base de données
+        $exec_requete = mysqli_query($conn, $requete);
+
+        if($exec_requete){
+            echo 'sucess : ';
+            //echo $nom.' , '.$prenom.' , '.$email.' , '.$adresse.' , '.$cp.' , '.$ville.' , '.$mdp.'<br>';
+            header("Location: ../index.php");
+
+    } else {
+        echo 'ça foire ! : ';
+        //echo $nom.' , '.$prenom.' , '.$email.' , '.$adresse.' , '.$cp.' , '.$ville.' , '.$mdp.'<br>';
+        echo mysqli_error ($conn);
         header("Location: ../index.php");
     }
+
+    }
+
+    
         
 
 }

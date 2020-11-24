@@ -81,9 +81,9 @@ session_start();
                 <li class="nav-item">
                     <?php 
                     if (!isset($_SESSION['prenom'])) {
-                        echo '<a class="nav-link" id="login" href="#conlogin" data-toggle="modal">Connexion</a>';
+                        echo '<a class="nav-link" id="login" href="#modlogin" data-toggle="modal">Connexion</a>';
                     } else {
-                        echo '<a class="nav-link" id="logout" href="#conlogout" data-toggle="modal">Déconnexion</a>';
+                        echo '<a class="nav-link" id="logout" href="#modlogout" data-toggle="modal">Déconnexion</a>';
                     }
                     ?>
                 </li>

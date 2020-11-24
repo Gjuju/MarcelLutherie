@@ -1,6 +1,6 @@
 
 <!-- Modal Login -->
-<div class="modal fade" id="conlogin" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="modlogin" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <!-- Modal Login content-->
                 <div class="modal-content">
@@ -11,7 +11,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="./php/login.php" name="login">
+                        <form method="POST" action="./php/login.php">
                             <div class="form-group">
                                 <label for="logemail">Email</label>
                                 <input type="email" class="form-control" name="logemail" id="logemail"
@@ -28,12 +28,39 @@
                                 <input type="checkbox" class="form-check-input" id="Checklog">
                                 <label class="form-check-label" for="Check1">Se souvenir de moi</label>
                             </div>
-                            <button type="submit" class="btn btn-success">Me connecter</button>
+                            <button type="submit" class="btn btn-success" name="login">Me connecter</button>
                         </form>
                         
                     </div>
                     <div class="modal-footer">
-                        <a  data-dismiss="modal" data-toggle="modal" href="#register">Pas encore enregistré ?</a>
+                        <a  data-dismiss="modal" data-toggle="modal" href="#modregister">Pas encore enregistré ?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- modal déconnexion -->
+
+<div class="modal fade" id="modlogout" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <!-- Modal Login content-->
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">Déconnexion</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="./php/logout.php">
+                                <div class="form-group">
+                                    <h1><?php echo $_SESSION['prenom']; ?></h1>
+                                    <p>Voulez vous vous déconnecter ?</p>
+                                </div>
+                                <button type="submit" class="btn btn-success">Se déconnecter</button>
+                            </form>    
+                        </div>
+                    <div class="modal-footer">
                     </div>
                 </div>
             </div>
@@ -44,21 +71,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- Modal enregistrement -->
-        <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modregister" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <!-- Modal enregistrement content-->
                 <div class="modal-content">
@@ -70,13 +84,13 @@
                     </div>
                     
                     <div class="modal-body">
-                        <form method="POST" action="./php/register.php" name="regform">
+                        <form method="POST" action="./php/register.php" name="">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nom">Nom</label>
                                             <input type="text" name="nom" class="form-control" id="newName"
-                                                aria-describedby="nameHelp" placeholder="Alain">
+                                                aria-describedby="nameHelp" placeholder="Martin">
                                         </div>
                                     </div>
 
@@ -84,7 +98,7 @@
                                         <div class="form-group">
                                             <label for="prenom">Prénom</label>
                                             <input type="text" name="prenom" class="form-control" id="newSurname"
-                                                aria-describedby="nameHelp" placeholder="Martin">
+                                                aria-describedby="nameHelp" placeholder="Alain">
                                         </div>
                                     </div>
                                 </div>
@@ -134,12 +148,12 @@
                                     </div>
                                 </div>
 
-                            <button type="submit" class="btn btn-success">M'enregistrer</button>
+                            <button type="submit" class="btn btn-success" name="regform">M'enregistrer</button>
                         </form>
                     </div>
                     
                     <div class="modal-footer">
-                        <a data-dismiss="modal" data-toggle="modal" href="#conlogin">Déjà enregistré ?</a>
+                        <a data-dismiss="modal" data-toggle="modal" href="#modlogin">Déjà enregistré ?</a>
                     </div>
 
                 </div>
@@ -147,8 +161,14 @@
         </div>
 
 
+
+
+
+
+
+
  <!-- Modal login success -->
- <div class="modal fade" id="logOk" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+ <div class="modal fade" id="modlogOk" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <!-- Modal Login content-->
                 <div class="modal-content">
@@ -174,7 +194,7 @@
 
 
 <!-- Modal login fail -->
-<div class="modal fade" id="logFail" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="modlogFail" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <!-- Modal Login content-->
                 <div class="modal-content">
@@ -198,31 +218,4 @@
         </div>
 
 
-        <!-- modal déconnexion -->
-
-        <div class="modal fade" id="conlogout" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <!-- Modal Login content-->
-                <div class="modal-content">
-                <form action="./php/logout.php">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalLabel">Déconnexion</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <h1><?php echo $_SESSION['prenom']; ?></h1>
-                            <p>Voulez vous vous déconnecter ?</p>
-                            <!--<a href="./php/logout.php">Déconnexion</a>-->
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Se déconnecter</button>
-                </form>    
-                    <div class="modal-footer">
-                        <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-target="#conlogin" aria-label="Close">Recommencer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
