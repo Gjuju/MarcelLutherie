@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcel Lutherie</title>
-    <link rel="stylesheet" href="/css/css.css">
+    <link rel="stylesheet" href="./css/css.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -25,17 +28,6 @@
 
 <body>
 
-<?php
-$email = "";
-$mdp = "";
-if (isset($_POST['login'])) {
-	$email = strip_tags($_POST['email']);
-    $mdp = strip_tags($_POST['mdp']);
-    echo $email;
-    echo $mdp;
-}
-?>
-
 
     <div class="container-fluid">
 
@@ -51,10 +43,6 @@ if (isset($_POST['login'])) {
                 </div>
             </div>
         </div>
-
-
-
-
 
         <!-- Navbar -->
 
@@ -76,30 +64,102 @@ if (isset($_POST['login'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="#!">Contact</a>
                 </li>
+                <?php
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="#!">Admin</a>
+                            </li>';
+                    } 
+                    ?>
+                
+
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
                 <!-- Modal login -->
                 <li class="nav-item">
-                    <a class="nav-link" id="login" href="#login">Connexion</a>
+                    <?php 
+                    if (!isset($_SESSION['prenom'])) {
+                        echo '<a class="nav-link" id="login" href="#modlogin" data-toggle="modal">Connexion</a>';
+                    } else {
+                        echo '<a class="nav-link" id="logout" href="#modlogout" data-toggle="modal">Déconnexion</a>';
+                    }
+
+                    if (isset($_SESSION['start'])) {
+                        unset($_SESSION['start']);
+                        //appel modal logOk
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modlogOk').modal('show');
+                            });
+                            </script>";
+                    }
+
+                    if (isset($_SESSION['failcon'])) {
+                        unset($_SESSION['failcon']);
+                        //appel modal modlogFail
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modlogFail').modal('show');
+                            });
+                            </script>";
+                    }
+
+                    if (isset($_SESSION['regOk'])) {
+                        unset($_SESSION['regOk']);
+                        //appel modal regOk
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modregOk').modal('show');
+                            });
+                            </script>";
+                    }
+
+                    if (isset($_SESSION['regFail'])) {
+                        unset($_SESSION['regFail']);
+                        //appel modal regFail
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modregFail').modal('show');
+                            });
+                            </script>";
+                    }
+
+                    if (isset($_SESSION['logout'])) {
+                        unset($_SESSION['logout']);
+                        //appel modal regFail
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modlogout').modal('show');
+                            });
+                            </script>";
+                    }
+
+                    ?>
                 </li>
-                <!--<li class="nav-item">
-                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#connexion">Connexion</button>
-                </li>-->
             </ul>
         </div>
 
+        <div>
+        </div>
+
+
+        <!-- corps de la page -->
         <div class="col-12">
             <div class="row">
                 <div class="col-3">
-                    <p class="text-right">Qui sommes nous :</p>
+                    <h5 class="text-right"> Qui sommes nous :</h5>
                 </div>
                 <div class="col-8">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At nihil ullam enim, sunt
+                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At nihil ullam enim, sunt
                         voluptatibus,
                         aliquam deleniti ipsam dicta quia facere nostrum! Odit quidem nam odio, soluta quis
                         totam
                         praesentium, obcaecati deserunt qui consequatur aliquid provident blanditiis culpa
                         labore hic
                         non! Similique, maxime quasi nemo rerum quo blanditiis sunt a? Recusandae.
-                    </p>
+                    </h5>
                 </div>
                 <div class="col-1">
                 </div>
@@ -107,12 +167,12 @@ if (isset($_POST['login'])) {
             </div>
             <div class="row">
                 <div class="col-3">
-                    <p class="text-right">Que faisons nous :</p>
-                    <p><?php echo $email; ?></p>
-                    <p><?php echo $mdp; ?></p>
+                    <h5 class="text-right">Que faisons nous :</h5>
+                    <p></p>
+                    <p></p>
                 </div>
                 <div class="col-8">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea adipisci eum nemo, iusto non
+                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea adipisci eum nemo, iusto non
                         quibusdam repellat explicabo eveniet. Similique velit exercitationem quasi fuga nobis ducimus
                         veritatis saepe soluta esse nam quae, cumque omnis, ut possimus? Vitae suscipit ipsa
                         necessitatibus? Ea, soluta quidem voluptatum fuga esse ad assumenda illum similique asperiores
@@ -124,19 +184,8 @@ if (isset($_POST['login'])) {
                         numquam alias, fugit rem necessitatibus doloribus dicta nemo excepturi quibusdam temporibus
                         nostrum. Atque ipsum corrupti nam nihil expedita dolorum doloremque quo architecto, provident
                         culpa earum magnam deleniti ratione aliquam cum natus beatae ut similique veniam laudantium
-                        ipsa? Repudiandae, numquam molestiae quis fuga non neque quasi distinctio! Quibusdam, voluptates
-                        eaque harum assumenda voluptatum numquam placeat ipsa enim? Obcaecati nemo totam tempora ab cum
-                        eligendi, commodi pariatur provident adipisci sed soluta cumque illum? Qui nobis, sunt dolores,
-                        tempora vero, enim saepe eaque perspiciatis laborum laudantium labore placeat odio unde? Ab
-                        doloremque autem qui natus architecto maiores dolor officiis, quo, rem labore officia
-                        perspiciatis sequi eaque optio, provident ipsa laboriosam assumenda maxime. Doloremque, nam.
-                        Impedit, non dolorum inventore iusto ipsum doloribus eaque ratione ab. Tempore ducimus,
-                        excepturi minus expedita incidunt fugit minima dignissimos modi, praesentium voluptatem quae
-                        dolorum facilis et neque, inventore ratione pariatur labore! Aliquid eveniet facere laudantium
-                        eligendi placeat, nam corporis sit autem doloribus, fugiat ullam odit. Accusamus illum porro
-                        minus, explicabo perferendis numquam ipsum natus eveniet beatae reprehenderit corrupti cum quas
-                        voluptatem veniam quae dolorum quaerat culpa.
-                    </p>
+                        ipsa? 
+                    </h5>
                 </div>
                 <div class="col-1">
                 </div>
@@ -163,12 +212,6 @@ if (isset($_POST['login'])) {
                             <li>
                                 <a href="#!">Link 2</a>
                             </li>
-                            <li>
-                                <a href="#!">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 4</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -180,14 +223,12 @@ if (isset($_POST['login'])) {
 
 
         <?php
-        include "./php/login.php";
+        include "./php/modal.php";
         ?>
 
 
 
     </div>
 </body>
-<!--<script src="./js/js.js"></script>-->
-<script src="./js/login-register.js"></script>
 
 </html>
