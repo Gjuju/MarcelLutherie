@@ -22,6 +22,7 @@
         if($count==1){
             $_SESSION['prenom'] = $prenom;
             $_SESSION['admin'] = $admin;
+            $_SESSION['start'] = 1;
             echo "tout s'est bien passé.";
             echo "<script type='text/javascript'>
                 $(document).ready(function(){
@@ -31,7 +32,7 @@
             
         } else {
             //doit afficher le modal log fail
-            echo "Le nom d'utilisateur ou le mot de passe est incorrect.";
+            $_SESSION['failcon'] = 1;
         }
         header("Location: ../index.php");
     }

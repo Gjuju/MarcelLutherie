@@ -5,7 +5,7 @@
   // Détruire la session.
   if(session_destroy())
   {
-    // Redirection vers la page de connexion
+    $_SESSION['logout'] = 1;
     header("Location: ../index.php");
   }
 ?>

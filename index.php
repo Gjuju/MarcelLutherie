@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcel Lutherie</title>
-    <link rel="stylesheet" href="/css/css.css">
+    <link rel="stylesheet" href="./css/css.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -85,6 +85,57 @@ session_start();
                     } else {
                         echo '<a class="nav-link" id="logout" href="#modlogout" data-toggle="modal">Déconnexion</a>';
                     }
+
+                    if (isset($_SESSION['start'])) {
+                        unset($_SESSION['start']);
+                        //appel modal logOk
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modlogOk').modal('show');
+                            });
+                            </script>";
+                    }
+
+                    if (isset($_SESSION['failcon'])) {
+                        unset($_SESSION['failcon']);
+                        //appel modal modlogFail
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modlogFail').modal('show');
+                            });
+                            </script>";
+                    }
+
+                    if (isset($_SESSION['regOk'])) {
+                        unset($_SESSION['regOk']);
+                        //appel modal regOk
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modregOk').modal('show');
+                            });
+                            </script>";
+                    }
+
+                    if (isset($_SESSION['regFail'])) {
+                        unset($_SESSION['regFail']);
+                        //appel modal regFail
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modregFail').modal('show');
+                            });
+                            </script>";
+                    }
+
+                    if (isset($_SESSION['logout'])) {
+                        unset($_SESSION['logout']);
+                        //appel modal regFail
+                        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#modlogout').modal('show');
+                            });
+                            </script>";
+                    }
+
                     ?>
                 </li>
             </ul>
@@ -98,17 +149,17 @@ session_start();
         <div class="col-12">
             <div class="row">
                 <div class="col-3">
-                    <p class="text-right">Qui sommes nous :</p>
+                    <h5 class="text-right"> Qui sommes nous :</h5>
                 </div>
                 <div class="col-8">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At nihil ullam enim, sunt
+                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At nihil ullam enim, sunt
                         voluptatibus,
                         aliquam deleniti ipsam dicta quia facere nostrum! Odit quidem nam odio, soluta quis
                         totam
                         praesentium, obcaecati deserunt qui consequatur aliquid provident blanditiis culpa
                         labore hic
                         non! Similique, maxime quasi nemo rerum quo blanditiis sunt a? Recusandae.
-                    </p>
+                    </h5>
                 </div>
                 <div class="col-1">
                 </div>
@@ -116,12 +167,12 @@ session_start();
             </div>
             <div class="row">
                 <div class="col-3">
-                    <p class="text-right">Que faisons nous :</p>
+                    <h5 class="text-right">Que faisons nous :</h5>
                     <p></p>
                     <p></p>
                 </div>
                 <div class="col-8">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea adipisci eum nemo, iusto non
+                    <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea adipisci eum nemo, iusto non
                         quibusdam repellat explicabo eveniet. Similique velit exercitationem quasi fuga nobis ducimus
                         veritatis saepe soluta esse nam quae, cumque omnis, ut possimus? Vitae suscipit ipsa
                         necessitatibus? Ea, soluta quidem voluptatum fuga esse ad assumenda illum similique asperiores
@@ -134,7 +185,7 @@ session_start();
                         nostrum. Atque ipsum corrupti nam nihil expedita dolorum doloremque quo architecto, provident
                         culpa earum magnam deleniti ratione aliquam cum natus beatae ut similique veniam laudantium
                         ipsa? 
-                    </p>
+                    </h5>
                 </div>
                 <div class="col-1">
                 </div>
