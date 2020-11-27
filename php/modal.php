@@ -1,7 +1,7 @@
 
 <!-- Modal Login -->
 <div class="modal fade" id="modlogin" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog modal-dialog-centered" role="document">
                 <!-- Modal Login content-->
                 <div class="modal-content">
                     <div class="modal-header">
@@ -42,7 +42,7 @@
 <!-- modal déconnexion -->
 
 <div class="modal fade" id="modlogout" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog modal-dialog-centered" role="document">
                 <!-- Modal Login content-->
                 <div class="modal-content">
                         <div class="modal-header">
@@ -52,7 +52,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="./php/logout.php">
+                            <form action="./php/logout.php"> <!-- prelogout.php -->
                                 <div class="form-group">
                                     <h1><?php echo $_SESSION['prenom']; ?></h1>
                                     <p>Voulez vous vous déconnecter ?</p>
@@ -73,7 +73,7 @@
 
         <!-- Modal enregistrement -->
         <div class="modal fade" id="modregister" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg" role="document">
                 <!-- Modal enregistrement content-->
                 <div class="modal-content">
                     <div class="modal-header">
@@ -143,7 +143,7 @@
                                         <div class="form-group">
                                             <label for="verifpassword">Validez votre de passe</label>
                                             <input type="password" name="verifpassword" class="form-control" id="validePassword"
-                                                placeholder="votre mot de passe">
+                                                placeholder="Validez mot de passe">
                                         </div>
                                     </div>
                                 </div>
@@ -161,126 +161,24 @@
         </div>
 
 
-
-
-
-<!-- Modal login success -->
-        <div class="modal fade" id="modlogOk" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <!-- Modal info -->
+<div class="modal fade" id="modinfo" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog modal-dialog-centered" role="document">
                 <!-- Modal Login content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="ModalLabel">Connexion réussie</h5>
+                        <h5 class="modal-title" id="ModalLabel"><?php echo $_SESSION['infotitle']; ?></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <h5>Ravis de vous revoir <?php echo $_SESSION['prenom']; ?>.</h5>
-                            <h5>Vous etes maintenant connecté.</h5>
+                        <h5><?php echo $_SESSION['infobody']; ?></h5>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Continuer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-<!-- Modal login fail -->
-<div class="modal fade" id="modlogFail" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <!-- Modal Login content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalLabel">Connexion échouée !</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <h5>Assurez vous de rentrer les bons</h5>
-                            <h5>email et mot de passe</h5>
-                            <h5>Peut etre n'etes vous pas encore enregesitré ?</h5>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#modlogin" aria-label="Close">Retenter ?</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-<!-- Modal register success -->
-<div class="modal fade" id="modregOk" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <!-- Modal Login content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalLabel">Enregistrement réussi</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <h5>Vous pouvez désormais vous connecter.</h5>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Continuer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal register Fail -->
-<div class="modal fade" id="modregFail" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <!-- Modal Login content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalLabel">Enregistrement échoué !</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                        <h5>Re vérifiez tous vons champs.</h5>
-                        <h5>Peut être etes vous déja enregistré ?</h5>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Continuer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal register Fail -->
-<div class="modal fade" id="modlogout" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <!-- Modal Login content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ModalLabel">Déconnexion réussie.</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                        <h5>A bientôt.</h5>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Continuer</button>
+                        <?php echo $_SESSION['infobutton']; ?>
                     </div>
                 </div>
             </div>

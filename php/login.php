@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+    
     require('./dbconfig.php');
     if (isset($_POST['login'])){
         $email = stripslashes($_REQUEST['logemail']);
@@ -20,19 +22,23 @@
         }
         
         if($count==1){
+            //réussite
             $_SESSION['prenom'] = $prenom;
             $_SESSION['admin'] = $admin;
-            $_SESSION['start'] = 1;
-            echo "tout s'est bien passé.";
-            echo "<script type='text/javascript'>
-                $(document).ready(function(){
-                $('#modlogOk').modal('show');
-                });
-                </script>";
-            
+
+            $_SESSION['info'] = 1;
+            $_SESSION['infotitle'] = "Connexion réussie";
+            $_SESSION['infobody'] = '<h5>Ravis de vous revoir '. $_SESSION['prenom']. '</h5>
+                        <h5>Vous etes maintenant connecté.</h5>';
+            $_SESSION['infobutton'] = '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Continuer</button>';
         } else {
-            //doit afficher le modal log fail
-            $_SESSION['failcon'] = 1;
+            //erreur
+            $_SESSION['info'] = 1;
+            $_SESSION['infotitle'] = "Connexion Echouée";
+            $_SESSION['infobody'] = '<h5>Assurez vous de rentrer les bons</h5>
+                                    <h5>email et mot de passe</h5>
+                                    <h5>Peut etre n\'etes vous pas encore enregesitré ?</h5>';
+            $_SESSION['infobutton'] = '<button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#modlogin" aria-label="Close">Retenter ?</button>';
         }
         header("Location: ../index.php");
     }

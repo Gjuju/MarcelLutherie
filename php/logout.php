@@ -3,9 +3,10 @@
   session_start();
   
   // Détruire la session.
-  if(session_destroy())
-  {
-    $_SESSION['logout'] = 1;
-    header("Location: ../index.php");
+  if (isset($_SESSION)) {
+    session_destroy();
   }
+  
+  header("Location: ../index.php");
+  
 ?>
