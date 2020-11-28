@@ -11,7 +11,7 @@ Replace '0' with corresponding slide number.
 
 
 <div class="container">
-    <div>
+<p></p> <div>
         <div class="row" id="gallery" data-toggle="modal" data-target="#exampleModal">
             <div class="col-12 col-sm-6 col-lg-3">
                 <img class="w-100" src="./img/gal1/1.jpg" alt="First slide" data-target="#carouselExample" data-slide-to="0">
@@ -77,7 +77,7 @@ Replace '0' with corresponding slide number.
                 </div>
             </div>
         </div>
-    </div>
+<p></p> </div>
 </div>
 
 
