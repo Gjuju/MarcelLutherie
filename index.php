@@ -35,7 +35,8 @@ session_start();
             $index[3] = "./pages/chordico.php";
             $index[4] = "./pages/custom.php";
             $index[5] = "./pages/contact.php";
-            $index[6] = "./pages/admin.php";
+            $index[6] = "./pages/custom-2.php";
+            $index[10] = "./pages/admin.php";
 
             // vérifie Id de page pour changer modifier class="active" de navbar et charger corps de page. 
             if (!isset($_GET['id'])) { // si href?id unset
@@ -79,7 +80,6 @@ session_start();
         if ((isset($_SESSION['info'])) && $_SESSION['info'] == 1) {
         //appel modal info
             unset($_SESSION['info']);
-            echo 'session = 1 devrait afficher modal info de bienvenue <br>';
             ?>
                 <script type="text/javascript">
                         $(document).ready(function(){
@@ -129,9 +129,9 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link <?php if ($page == 2) echo 'active'; ?>" href="./index.php?id=2">Galerie</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link <?php if ($page == 3) echo 'active'; ?>" href="./index.php?id=3">ChorDico</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link <?php if ($page == 4) echo 'active'; ?>" href="./index.php?id=4">Custom</a>
                 </li>
@@ -141,7 +141,7 @@ session_start();
                 <?php
                 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                         echo '<li class="nav-item">
-                                <a class="nav-link <?php if ($page == 6) echo \'active\'; ?>" href="./index.php?id=6">Admin</a>
+                                <a class="nav-link <?php if ($page == 6) echo \'active\'; ?>" href="./index.php?id=10">Admin</a>
                             </li>';
                     } 
                     ?>

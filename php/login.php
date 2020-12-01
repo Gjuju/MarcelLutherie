@@ -8,15 +8,17 @@
         $email = mysqli_real_escape_string($conn, $email);
         $password = stripslashes($_REQUEST['logpwd']);
         $password = mysqli_real_escape_string($conn, $password);
-            $requete = "SELECT prenom,admin FROM users WHERE email='".$email."' and mdp='".$password."'";
+            $requete = "SELECT id,prenom,admin FROM users WHERE email='".$email."' and mdp='".$password."'";
         $exec_requete = mysqli_query($conn,$requete);
         $reponse      = mysqli_fetch_array($exec_requete);
         $count = mysqli_num_rows($exec_requete);
         
+        $iduser = "";
         $prenom = "";
         $admin = "";
 
         if (isset($reponse)) {
+        $iduser = $reponse['id'];
         $prenom = $reponse['prenom'];
         $admin = $reponse['admin'];
         }
@@ -24,6 +26,7 @@
         if($count==1){
             //réussite
             $_SESSION['prenom'] = $prenom;
+            $_SESSION['id'] = $iduser;
             $_SESSION['admin'] = $admin;
 
             $_SESSION['info'] = 1;
