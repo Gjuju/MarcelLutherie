@@ -63,7 +63,7 @@ session_start();
         <?php
 
         
-        if ((isset($_SESSION['info']) && $_SESSION['info']) == 1) {
+        if ((isset($_SESSION['info'])) && $_SESSION['info'] == 1) {
             unset($_SESSION['info']);
             //appel modal prélogout
             echo "<script type='text/javascript'>
@@ -71,7 +71,7 @@ session_start();
                 $('#modinfo').modal('show');
                 });
                 </script>";
-        } else if ((isset($_SESSION['info']) && $_SESSION['info']) == 2) { // censé fonctionner avec prelogout.php dans modal déconnexion
+        } else if ((isset($_SESSION['info'])) && $_SESSION['info'] == 2) { // censé fonctionner avec prelogout.php dans modal déconnexion
             $_SESSION['info'] = 1 ;
             //appel modal logout
             

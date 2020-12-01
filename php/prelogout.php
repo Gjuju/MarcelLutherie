@@ -1,6 +1,6 @@
 <?php
-  // Initialiser la session
   session_start();
+  // Initialiser la session
   
             $_SESSION['info'] = 2;
             $_SESSION['infotitle'] = "Déconnecion réussie";

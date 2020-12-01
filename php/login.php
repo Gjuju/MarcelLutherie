@@ -9,7 +9,7 @@
         $password = stripslashes($_REQUEST['logpwd']);
         $password = mysqli_real_escape_string($conn, $password);
             $requete = "SELECT prenom,admin FROM users WHERE email='".$email."' and mdp='".$password."'";
-        $exec_requete = mysqli_query($conn,$requete) or die(mysql_error());
+        $exec_requete = mysqli_query($conn,$requete);
         $reponse      = mysqli_fetch_array($exec_requete);
         $count = mysqli_num_rows($exec_requete);
         

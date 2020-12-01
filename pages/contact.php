@@ -5,8 +5,8 @@
                 </div>
                 <div class="col-8 text-center">
                     <h3>Marcel Lutherie</h3>
-                    <h5>5 Rue de Claret,</h5>
-                    <h5>34070 Montpellier</h5>
+                    <h5>20 Place de la maire,</h5>
+                    <h5>34270 Le triadou</h5>
                     <h5></h5>
 
                 </div>
@@ -31,9 +31,9 @@
         <!-- Fichiers Javascript -->
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
         <script type="text/javascript">
-            // On initialise la latitude et la longitude de Paris (centre de la carte)
-            var lat = 48.852969;
-            var lon = 2.349903;
+            // On initialise la latitude et la longitude du triadou (centre de la carte)
+            var lat = 43.7397875;
+            var lon = 3.8523871;
             var macarte = null;
             // Fonction d'initialisation de la carte
             function initMap() {
