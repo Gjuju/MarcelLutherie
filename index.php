@@ -9,10 +9,30 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcel Lutherie</title>
     <link rel="stylesheet" href="./css/css.css">
+
+    
+    
+    <!-- jsPDF -->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+
+
+            <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
 
 <!-- Rend navbar et contenu de la page dynamique -->
@@ -24,7 +44,8 @@ session_start();
             $index[3] = "./pages/chordico.php";
             $index[4] = "./pages/custom.php";
             $index[5] = "./pages/contact.php";
-            $index[6] = "./pages/admin.php";
+            $index[6] = "./pages/custom-2.php";
+            $index[10] = "./pages/admin.php";
 
             // vérifie Id de page pour changer modifier class="active" de navbar et charger corps de page. 
             if (!isset($_GET['id'])) { // si href?id unset
@@ -47,58 +68,56 @@ session_start();
 
 </head>
 
-<!-- <body onload="test()"> -->
-    <body>
+<body>
 
     <div class="container-fluid">
 
-    <!-- du débug de session -->
-    <!-- <pre><?php echo print_r($_SESSION); ?> <br>
-            <?php if (isset($_SESSION['info'])) {
-                echo "info = ".$_SESSION['info'];
-            }; ?>
-    </pre>  -->
-
-        <!-- Appel modal info ne marche pas lors de déconnexion -->
-        <?php
-
-        
-        if ((isset($_SESSION['info']) && $_SESSION['info']) == 1) {
+    <?php
+        /* appel modal inf login etc etc */
+        if ((isset($_SESSION['info'])) && $_SESSION['info'] == 1) {
             unset($_SESSION['info']);
-            //appel modal prélogout
-            echo "<script type='text/javascript'>
-                $(document).ready(function(){
-                $('#modinfo').modal('show');
-                });
-                </script>";
-        } else if ((isset($_SESSION['info']) && $_SESSION['info']) == 2) { // censé fonctionner avec prelogout.php dans modal déconnexion
-            $_SESSION['info'] = 1 ;
-            //appel modal logout
-            
-            echo "<script type='text/javascript'>
-                $(document).ready(function(){
-                $('#modinfo').modal('show');
-                });
-                </script>";
+            ?>
+                <script type="text/javascript">
+                        $(document).ready(function(){
+                        $("#modinfo").modal("show");
+                    });
+                </script>
+            <?php
 
+        /* Appel modal déconnexion */
+        } elseif ((isset($_SESSION['info'])) && $_SESSION['info'] == 2) {
+        //appel modal logout
+            ?>
+            <script type='text/javascript'>
+                    $(document).ready(function(){
+                    $('#modinfo').modal('show');
+                        $('#modinfo').on('hidden.bs.modal', function () {
+                        location.reload();
+                    });
+                });
+            </script>
+            <?php
+            session_destroy();
+            ?>
             
-            
-            echo "session destroy 2 <br>";
+            <?php
         }
-        ?>
 
+
+
+
+        ?>
         <!-- Header avec image -->
         <div class="row">
-
             <div class="col-12">
-
                 <img src="./assets/img/Head.png" class="img-fluid" alt="Responsive image">
-
                 <div class="carousel-caption">
                     <p class="bighead">Marcel Lutherie</p>
                 </div>
             </div>
         </div>
+
+
 
 
 
@@ -111,9 +130,9 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link <?php if ($page == 2) echo 'active'; ?>" href="./index.php?id=2">Galerie</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link <?php if ($page == 3) echo 'active'; ?>" href="./index.php?id=3">ChorDico</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link <?php if ($page == 4) echo 'active'; ?>" href="./index.php?id=4">Custom</a>
                 </li>
@@ -123,7 +142,7 @@ session_start();
                 <?php
                 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                         echo '<li class="nav-item">
-                                <a class="nav-link <?php if ($page == 6) echo \'active\'; ?>" href="./index.php?id=6">Admin</a>
+                                <a class="nav-link <?php if ($page == 6) echo \'active\'; ?>" href="./index.php?id=10">Admin</a>
                             </li>';
                     } 
                     ?>
@@ -142,7 +161,7 @@ session_start();
             </ul>
         </div>
 
-        <div>
+        <div class="bg">
         <!-- corps de la page -->
         <?php
             include_once("$bodycontent") ;
@@ -154,20 +173,21 @@ session_start();
         <footer class="page-footer bg-dark text-white pt-4">
             <div class="container-fluid text-center text-md-left">
                 <div class="row">
-                    <div class="col-md-8 mt-md-0 mt-4">
-                        <h5 class="text-uppercase">Footer Content</h5>
-                        <p>Here you can use rows and columns to organize your footer content.</p>
+                    <div class="col-8 mt-md-0 mt-4">
+                        <h5 class="text-uppercase">Marcel Lutherie</h5>
+                        <p>20 Place de la maire,</p>
+                        <p>34270 Le triadou</p>
                     </div>
                     <hr class="clearfix w-100 d-md-none pb-3">
 
-                    <div class="col-md-4 mb-md-0 mb-4">
+                    <div class="col-4 mb-md-0 mb-4">
                         <h5 class="text-uppercase">Liens</h5>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#!">Link 1</a>
+                                <a href="https://fr.wikipedia.org/wiki/Guitare">La Guitare sur Wikipedia</a>
                             </li>
                             <li>
-                                <a href="#!">Link 2</a>
+                                <a href="https://4allmusic.com/selection-luthiers-pays/luthiers-en-france/507-luthiers-guitares-occitanie/600-liste-de-luthiers-guitares-occitanie">Les luthiers d'Occitanie</a>
                             </li>
                         </ul>
                     </div>
@@ -178,29 +198,17 @@ session_start();
 
         </footer>
 
-<div class="container">
-        <?php
-        include_once("./php/modal.php") ;
-        ?>
+        <div class="container-fluid">
+            <?php
+            include_once("./php/modal.php") ;
+            ?>
+        </div>
+
+
 </div>
 
 
-    </div>
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
 </body> 
-
 <script src="./js/js.js"></script>
-
 </html>

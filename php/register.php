@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require('./dbconfig.php');
 
 if (isset($_POST['regform'])){ // si envoi du formulaire register
@@ -36,7 +37,7 @@ if (isset($_POST['regform'])){ // si envoi du formulaire register
             
     // s'assure que l'utilisateur n'es pas déjà enregistré par "email"
         $requverif = "SELECT email FROM users WHERE email = '$email' ";
-        $exec_verif = mysqli_query($conn,$requverif) or die(mysql_error());
+        $exec_verif = mysqli_query($conn,$requverif);
         //$repverif = mysqli_fetch_array($exec_verif);
         if (mysqli_num_rows($exec_verif) > 0) {
             // output data of each row
@@ -101,7 +102,6 @@ if (isset($_POST['regform'])){ // si envoi du formulaire register
         }
 
     }
-
 
 }
 ?>
