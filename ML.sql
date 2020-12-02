@@ -12,10 +12,10 @@ CREATE TABLE `users` (
     `mdp` varchar(255) NOT NULL ) ;
 
 
-CREATE TABLE article (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, ref varchar(13) NOT NULL, designation varchar(100) NOT NULL, prix decimal(7,2) NOT NULL);
+CREATE TABLE article (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, ref varchar(20) NOT NULL, designation varchar(100) NOT NULL, prix decimal(7,2) NOT NULL);
 CREATE TABLE compo_art_cat (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, id_art int, id_cat int);
-CREATE TABLE categorie (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, nom_cat varchar(13) NOT NULL);
-CREATE TABLE options (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, nom_opt varchar(13) NOT NULL, prix decimal(7,2) NOT NULL, id_cat int );
+CREATE TABLE categorie (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, nom_cat varchar(20) NOT NULL);
+CREATE TABLE options (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, nom_opt varchar(20) NOT NULL, prix decimal(7,2) NOT NULL, id_cat int );
 
 -- Ajout des contraintes type « clés étrangères)
 ALTER TABLE options add constraint FK_OPT_CAT FOREIGN KEY (id_cat) REFERENCES categorie(id) ;
@@ -35,36 +35,43 @@ Insert into article (ref, designation, prix) values ('GS1', 'Guitare Strat', 185
 Insert into article (ref, designation, prix) values ('BJ1', 'Basse jazz', 1750) ;
 
 -- insert into categorie
-Insert into categorie (nom_cat) values ('manche') ;
-Insert into categorie (nom_cat) values ('touche') ;
-Insert into categorie (nom_cat) values ('corps') ;
-Insert into categorie (nom_cat) values ('finition') ;
+Insert into categorie (nom_cat) values ('Manche') ;
+Insert into categorie (nom_cat) values ('Touche') ;
+Insert into categorie (nom_cat) values ('Corps') ;
+Insert into categorie (nom_cat) values ('Finition') ;
+Insert into categorie (nom_cat) values ('Micros') ;
+
 
 
 -- insert into options
 -- manche
-Insert into options (nom_opt,prix,id_cat) values ('érable','0€',1) ;
-Insert into options (nom_opt,prix,id_cat) values ('Padouk','80€',1) ;
-Insert into options (nom_opt,prix,id_cat) values ('Acajou','120€',1) ;
+Insert into options (nom_opt,prix,id_cat) values ('érable','0',1) ;
+Insert into options (nom_opt,prix,id_cat) values ('Padouk','80',1) ;
+Insert into options (nom_opt,prix,id_cat) values ('Acajou','120',1) ;
 
 -- touche
-Insert into options (nom_opt,prix,id_cat) values ('érable','0€',2) ;
+Insert into options (nom_opt,prix,id_cat) values ('érable','0',2) ;
 Insert into options (nom_opt,prix,id_cat) values ('Palissandre Inde','40',2) ;
-Insert into options (nom_opt,prix,id_cat) values ('Palissandre Rio','100€',2) ;
-Insert into options (nom_opt,prix,id_cat) values ('Ebene Macassar','140€',2) ;
+Insert into options (nom_opt,prix,id_cat) values ('Palissandre Rio','100',2) ;
+Insert into options (nom_opt,prix,id_cat) values ('Ebene Macassar','140',2) ;
 
 -- corps
-Insert into options (nom_opt,prix,id_cat) values ('Aulne','0€',3) ;
-Insert into options (nom_opt,prix,id_cat) values ('Tilleul','0€',3) ;
-Insert into options (nom_opt,prix,id_cat) values ('Frêne','120€',3) ;
-Insert into options (nom_opt,prix,id_cat) values ('Acajou','180€',3) ;
+Insert into options (nom_opt,prix,id_cat) values ('Aulne','0',3) ;
+Insert into options (nom_opt,prix,id_cat) values ('Tilleul','0',3) ;
+Insert into options (nom_opt,prix,id_cat) values ('Frêne','120',3) ;
+Insert into options (nom_opt,prix,id_cat) values ('Acajou','180',3) ;
 
 -- finition
-Insert into options (nom_opt,prix,id_cat) values ('Huilée Naturelle','0€',4) ;
-Insert into options (nom_opt,prix,id_cat) values ('Poly Naturelle','0€',4) ;
-Insert into options (nom_opt,prix,id_cat) values ('Poly Rouge','180€',4) ;
-Insert into options (nom_opt,prix,id_cat) values ('Ply Noire','180€',4) ;
-Insert into options (nom_opt,prix,id_cat) values ('Ply SunBurst','220€',4) ;
+Insert into options (nom_opt,prix,id_cat) values ('Huilée Naturelle','0',4) ;
+Insert into options (nom_opt,prix,id_cat) values ('Poly Naturelle','0',4) ;
+Insert into options (nom_opt,prix,id_cat) values ('Poly Rouge','180',4) ;
+Insert into options (nom_opt,prix,id_cat) values ('Ply Noire','180',4) ;
+Insert into options (nom_opt,prix,id_cat) values ('Ply SunBurst','220',4) ;
+
+-- Micros
+Insert into options (nom_opt,prix,id_cat) values ('Micros simples','0',5) ;
+Insert into options (nom_opt,prix,id_cat) values ('Micros doubles','60',5) ;
+
 
 -- insert into compo_art_cat
 Insert into compo_art_cat (id_art, id_cat) values (1,1) ;
@@ -74,7 +81,7 @@ Insert into compo_art_cat (id_art, id_cat) values (1,4) ;
 Insert into compo_art_cat (id_art, id_cat) values (2,1) ;
 Insert into compo_art_cat (id_art, id_cat) values (2,2) ;
 Insert into compo_art_cat (id_art, id_cat) values (2,3) ;
-Insert into compo_art_cat (id_art, id_cat) values (2,4) ;
+Insert into compo_art_cat (id_art, id_cat) values (2,5) ;
 
 
 
@@ -91,7 +98,7 @@ select id, nom, prix from options where id_cat = ?
 -- sortir nom_cat, nom_option et prix suffisant pour exercice :
 SELECT categorie.nom_cat, options.nom_opt, options.prix FROM categorie JOIN options ON options.id_cat = categorie.id 
 
--- sortir : categorie.id , categorie.nom_cat , options.nom_opt options.prix
+-- sortir : categorie.id , categorie.nom_cat , options.nom_opt , options.prix
 SELECT categorie.id , categorie.nom_cat, options.nom_opt, options.prix FROM categorie JOIN options ON options.id_cat = categorie.id 
 SELECT categorie.id , categorie.nom_cat, options.nom_opt, options.prix FROM categorie JOIN options ON options.id_cat = categorie.id
 
