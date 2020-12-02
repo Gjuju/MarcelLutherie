@@ -1,8 +1,13 @@
-<div class="container">
-        <div class="card">
+
+<div class="text-center mt-2 mb-2">
+    <button id="pdfbutton" class="btn btn-success">Imprimer en pdf ?</button>
+</div>
+
+<div class="container" >
+        <div class="card" id="pdfcontent">
             <div class="card-header">
-                Projet n° xxxx
-                <strong> du <?php echo date("d-m-Y") ?></strong>
+                Devis n° <?php echo $numdevis; ?>
+                <strong> du <?php echo date("d-m-Y"); ?></strong>
                 <span class="float-right"> <strong>Status:</strong> Devis</span>
 
             </div>

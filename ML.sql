@@ -1,26 +1,35 @@
 -- créa tables
 
-CREATE TABLE `users` (
-    `id` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `nom` varchar(100) NOT NULL,
-    `prenom` varchar(100) NOT NULL,
-    `email` varchar(255) NOT NULL,
-    `adresse` varchar(255) NOT NULL,
-    `cp` varchar(5) NOT NULL,
-    `ville` varchar(255) NOT NULL,
-    `admin` int(2) DEFAULT 0,
-    `mdp` varchar(255) NOT NULL ) ;
+CREATE TABLE users (
+    id int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nom varchar(100) NOT NULL,
+    prenom varchar(100) NOT NULL,
+    email varchar(255) NOT NULL,
+    adresse varchar(255) NOT NULL,
+    cp varchar(5) NOT NULL,
+    ville varchar(255) NOT NULL,
+    admin int(2) DEFAULT 0,
+    mdp varchar(255) NOT NULL ) ;
 
 
 CREATE TABLE article (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, ref varchar(20) NOT NULL, designation varchar(100) NOT NULL, prix decimal(7,2) NOT NULL);
 CREATE TABLE compo_art_cat (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, id_art int, id_cat int);
 CREATE TABLE categorie (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, nom_cat varchar(20) NOT NULL);
 CREATE TABLE options (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, nom_opt varchar(20) NOT NULL, prix decimal(7,2) NOT NULL, id_cat int );
+CREATE TABLE devis (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, id_user int NOT NULL, id_art int NOT NULL, date_devis DATE );
+CREATE TABLE dev_opt (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, id_dev int NOT NULL, id_opt int NOT NULL);
+
 
 -- Ajout des contraintes type « clés étrangères)
 ALTER TABLE options add constraint FK_OPT_CAT FOREIGN KEY (id_cat) REFERENCES categorie(id) ;
 ALTER TABLE compo_art_cat add constraint FK_COMP_ART FOREIGN KEY (id_art) REFERENCES article(id) ;
 ALTER TABLE compo_art_cat add constraint FK_COMP_CAT FOREIGN KEY (id_cat) REFERENCES categorie(id) ;
+ALTER TABLE devis add constraint FK_DEV_USR FOREIGN KEY (id_user) REFERENCES users(id) ;
+ALTER TABLE devis add constraint FK_DEV_ART FOREIGN KEY (id_art) REFERENCES article(id) ;
+ALTER TABLE dev_opt add constraint FK_DEVOPT_DEV FOREIGN KEY (id_dev) REFERENCES devis(id) ;
+ALTER TABLE dev_opt add constraint FK_DEVOPT_OPT FOREIGN KEY (id_opt) REFERENCES options(id) ;
+
+
 
 -- insert into users
 INSERT INTO users (nom, prenom, email, adresse, cp, ville, admin, mdp) VALUES
@@ -30,9 +39,11 @@ INSERT INTO users (nom, prenom, email, adresse, cp, ville, admin, mdp) VALUES
 ('Toto', 'Tata', 'toto@tata.com', '16 av le cours', '13000', 'Mars', 0, '123456'),
 ('Rob', 'Carmet', 'rom@carmet.com', '55 av de la libé', '84000', 'Avignon', 0, '12356');
 
+
 -- insert into article
 Insert into article (ref, designation, prix) values ('GS1', 'Guitare Strat', 1850) ;
 Insert into article (ref, designation, prix) values ('BJ1', 'Basse jazz', 1750) ;
+
 
 -- insert into categorie
 Insert into categorie (nom_cat) values ('Manche') ;

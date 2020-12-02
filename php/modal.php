@@ -44,13 +44,13 @@
     <div class="modal-dialog modal-dialog modal-dialog-centered" role="document">
         <!-- Modal Login content-->
         <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header text-center">
                     <h5 class="modal-title" id="ModalLabel">Déconnexion</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body  text-center">
                     <form action="./php/logout.php">
                         <div class="form-group">
                             <h1><?php echo $_SESSION['prenom']; ?></h1>
@@ -164,19 +164,19 @@
 <div class="modal fade" id="modinfo" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog modal-dialog-centered" role="document">
         <!-- Modal Login content-->
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content  text-center">
+            <div class="modal-header text-center">
                 <h5 class="modal-title" id="ModalLabel"><?php echo $_SESSION['infotitle']; ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body  text-center">
                 <div class="form-group">
                 <h5><?php echo $_SESSION['infobody']; ?></h5>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer  text-center">
                 <?php echo $_SESSION['infobutton']; ?>
             </div>
         </div>

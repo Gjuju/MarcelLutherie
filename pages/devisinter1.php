@@ -10,7 +10,7 @@
                                 <th>Ref</th>
 
                                 <th class="right">Prix</th>
-                                <th class="center">Qté</th>
+                                <!-- <th class="center">Qté</th> -->
                                 <th class="right">Total</th>
                             </tr>
                         </thead>

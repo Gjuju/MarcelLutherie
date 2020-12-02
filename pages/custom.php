@@ -26,22 +26,22 @@ if (!isset($_POST["produit"])) {
         </div>
 
         <div class="col">
-            <form class="group-form" method="post">
+            <form class="group-form text-center" method="post">
 
-                <label for="prod">Veuillez choisir votre produit à customiser</label>
+                <label class="mt-4 mb-4" for="prod"><h4>Veuillez choisir votre produit à customiser</h4></label>
 
-                <select class="form-control w-75" name="produit">
+                <select class="form-control w-100 mt-4 mb-4" name="produit">
                     <option value="1">Guitare</option>
                     <option value="2">Basse</option>
                 </select>
-                <input class="btn btn-success" type="submit" name="submit" value="C'est parti !">
+                <input class="btn btn-success mt-4 mb-4" type="submit" name="submit" value="C'est parti !">
             </form>
         </div>
 
         <div class="col-3">
             <!-- col bord vide -->
         </div>
-    </div>;
+    </div>
 <?php
 
 
