@@ -143,13 +143,13 @@ session_start();
 
                 <?php
                 if (isset($_SESSION['prenom']) && $_SESSION['admin'] == 1) {
-                        echo '<li class="nav-item">
-                                <a class="nav-link <?php if ($page == 99) echo \'active\'; ?>" href="./index.php?id=99">Admin</a>
-                            </li>';
+                    ?><li class="nav-item">
+                                <a class="nav-link <?php if ($page == 99) echo 'active'; ?>" href="./index.php?id=99">Admin</a>
+                            </li> <?php
                 } elseif (isset($_SESSION['prenom']) && $_SESSION['admin'] == 0) {
-                        echo '<li class="nav-item">
-                                <a class="nav-link <?php if ($page == 10) echo \'active\'; ?> " href="./index.php?id=10">Utilisateur</a>
-                            </li>';
+                    ?><li class="nav-item">
+                                <a class="nav-link <?php if ($page == 10) echo 'active'; ?>" href="./index.php?id=10">Utilisateur</a>
+                            </li> <?php
                 }
                 ?>
 
