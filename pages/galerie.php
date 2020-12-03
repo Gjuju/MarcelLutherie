@@ -21,16 +21,16 @@ Replace '0' with corresponding slide number.
         <div>
             <div class="row" id="gallery" data-toggle="modal" data-target="#exampleModal">
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <img class="w-100" src="./assets/img/gal1/1.jpg" alt="First slide" data-target="#carouselExample" data-slide-to="0">
+                    <img class="w-100 rounded" src="./assets/img/gal1/1.jpg" alt="First slide" data-target="#carouselExample" data-slide-to="0">
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <img class="w-100" src="./assets/img/gal1/2.jpg" alt="First slide" data-target="#carouselExample" data-slide-to="1">
+                    <img class="w-100 rounded" src="./assets/img/gal1/2.jpg" alt="First slide" data-target="#carouselExample" data-slide-to="1">
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <img class="w-100" src="./assets/img/gal1/3.jpg" alt="First slide" data-target="#carouselExample" data-slide-to="2">
+                    <img class="w-100 rounded" src="./assets/img/gal1/3.jpg" alt="First slide" data-target="#carouselExample" data-slide-to="2">
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
-                    <img class="w-100" src="./assets/img/gal1/4.jpg" alt="First slide" data-target="#carouselExample" data-slide-to="3">
+                    <img class="w-100 rounded" src="./assets/img/gal1/4.jpg" alt="First slide" data-target="#carouselExample" data-slide-to="3">
                 </div>
             </div>
 
@@ -56,16 +56,16 @@ Replace '0' with corresponding slide number.
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                <img class="d-block w-100" src="./assets/img/gal1/1.jpg" alt="First slide">
+                                <img class="d-block rounded w-100" src="./assets/img/gal1/1.jpg" alt="First slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="./assets/img/gal1/2.jpg" alt="Second slide">
+                                <img class="d-block rounded w-100" src="./assets/img/gal1/2.jpg" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="./assets/img/gal1/3.jpg" alt="Third slide">
+                                <img class="d-block rounded w-100" src="./assets/img/gal1/3.jpg" alt="Third slide">
                                 </div>
                                 <div class="carousel-item">
-                                <img class="d-block w-100" src="./assets/img/gal1/4.jpg" alt="Fourth slide">
+                                <img class="d-block rounded w-100" src="./assets/img/gal1/4.jpg" alt="Fourth slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">

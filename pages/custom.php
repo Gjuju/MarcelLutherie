@@ -16,6 +16,7 @@ $totalOptionsCalc = "";
 $countForeach = 0;
 $prixArticle = "";
 
+// devrait faire une requette pur aller chercher les produits
 
 if (!isset($_POST["produit"])) {
 
