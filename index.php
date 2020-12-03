@@ -10,62 +10,55 @@ session_start();
     <title>Marcel Lutherie</title>
     <link rel="stylesheet" href="./css/css.css">
 
-    
-    
+
+
     <!-- jsPDF -->
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-    
-    
+
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
 
-            <!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
-<!-- Rend navbar et contenu de la page dynamique -->
-<?php // permet de remplir les pages et modifier la navbar
-            $page = ''; // set page vide au chargement
-            $bodycontent = ''; // set bodycontent vide au chargement
-            $index[1] = "./pages/accueil.php"; // sommaire de la navbar id / pagecontent 
-            $index[2] = "./pages/galerie.php";
-            /* $index[3] = "./pages/chordico.php"; */
-            $index[4] = "./pages/custom.php";
-            $index[5] = "./pages/contact.php";
-            $index[6] = "./pages/custom-2.php";
-            $index[10] = "./pages/user.php";
-            $index[99] = "./pages/admin.php";
+    <!-- Rend navbar et contenu de la page dynamique -->
+    <?php // permet de remplir les pages et modifier la navbar
+    $page = ''; // set page vide au chargement
+    $bodycontent = ''; // set bodycontent vide au chargement
+    $index[1] = "./pages/accueil.php"; // sommaire de la navbar id / pagecontent 
+    $index[2] = "./pages/galerie.php";
+    /* $index[3] = "./pages/chordico.php"; */
+    $index[4] = "./pages/custom.php";
+    $index[5] = "./pages/contact.php";
+    $index[6] = "./pages/custom-2.php";
+    $index[10] = "./pages/user.php";
+    $index[99] = "./pages/admin.php";
 
-            // vérifie Id de page pour changer modifier class="active" de navbar et charger corps de page. 
-            if (!isset($_GET['id'])) { // si href?id unset
-                $page = 1; // page = 1
-                $bodycontent = $index[$page]; // bodycontent de l'index $page = 1 du sommaire
-            } else { // si href?id set
-                $page = $_GET['id'];  // page = id
-                $bodycontent = $index[$page]; // bodycontent de l'index $page du sommaire
-                if ( $page == 5 ) { // ne charge les contenus openstreetmap que si la page contact est appelée
-                    echo '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    // vérifie Id de page pour changer modifier class="active" de navbar et charger corps de page. 
+    if (!isset($_GET['id'])) { // si href?id unset
+        $page = 1; // page = 1
+        $bodycontent = $index[$page]; // bodycontent de l'index $page = 1 du sommaire
+    } else { // si href?id set
+        $page = $_GET['id'];  // page = id
+        $bodycontent = $index[$page]; // bodycontent de l'index $page du sommaire
+        if ($page == 5) { // ne charge les contenus openstreetmap que si la page contact est appelée
+            echo '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
                     <style type="text/css">
                         #map{ /* la carte DOIT avoir une hauteur sinon elle n\'apparaît pas */
                             height:400px;
                         }
                     </style>
                     ';
-                }
-            }
-        ?>
+        }
+    }
+    ?>
 
 </head>
 
@@ -73,26 +66,26 @@ session_start();
 
     <div class="container-fluid">
 
-    <?php
+        <?php
         /* appel modal inf login etc etc */
         if ((isset($_SESSION['info'])) && $_SESSION['info'] == 1) {
             unset($_SESSION['info']);
-            ?>
-                <script type="text/javascript">
-                        $(document).ready(function(){
-                        $("#modinfo").modal("show");
-                    });
-                </script>
-            <?php
+        ?>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#modinfo").modal("show");
+                });
+            </script>
+        <?php
 
-        /* Appel modal déconnexion */
+            /* Appel modal déconnexion */
         } elseif ((isset($_SESSION['info'])) && $_SESSION['info'] == 2) {
-        //appel modal logout
-            ?>
+            //appel modal logout
+        ?>
             <script type='text/javascript'>
-                    $(document).ready(function(){
+                $(document).ready(function() {
                     $('#modinfo').modal('show');
-                        $('#modinfo').on('hidden.bs.modal', function () {
+                    $('#modinfo').on('hidden.bs.modal', function() {
                         location.reload();
                     });
                 });
@@ -100,8 +93,8 @@ session_start();
             <?php
             session_destroy();
             ?>
-            
-            <?php
+
+        <?php
         }
 
 
@@ -143,21 +136,21 @@ session_start();
 
                 <?php
                 if (isset($_SESSION['prenom']) && $_SESSION['admin'] == 1) {
-                    ?><li class="nav-item">
-                                <a class="nav-link <?php if ($page == 99) echo 'active'; ?>" href="./index.php?id=99">Admin</a>
-                            </li> <?php
-                } elseif (isset($_SESSION['prenom']) && $_SESSION['admin'] == 0) {
-                    ?><li class="nav-item">
-                                <a class="nav-link <?php if ($page == 10) echo 'active'; ?>" href="./index.php?id=10">Utilisateur</a>
-                            </li> <?php
-                }
-                ?>
-
+                ?><li class="nav-item">
+                        <a class="nav-link <?php if ($page == 99) echo 'active'; ?>" href="./index.php?id=99">Admin</a>
+                    </li> <?php
+                        } elseif (isset($_SESSION['prenom']) && $_SESSION['admin'] == 0) {
+                            ?><li class="nav-item">
+                        <a class="nav-link <?php if ($page == 10) echo 'active'; ?>" href="./index.php?id=10">Utilisateur</a>
+                    </li> <?php
+                        }
+                            ?>
             </ul>
+
             <ul class="navbar-nav ml-auto">
                 <!-- Modal login -->
                 <li class="nav-item">
-                    <?php 
+                    <?php
                     if (!isset($_SESSION['prenom'])) {
                         echo '<a class="nav-link" id="login" href="#modlogin" data-toggle="modal">Connexion</a>';
                     } else {
@@ -169,9 +162,9 @@ session_start();
         </div>
 
         <div class="bg">
-        <!-- corps de la page -->
-        <?php
-            include_once("$bodycontent") ;
+            <!-- corps de la page -->
+            <?php
+            include_once("$bodycontent");
             ?>
         </div>
 
@@ -207,15 +200,16 @@ session_start();
 
         <div class="container-fluid">
             <?php
-            include_once("./php/modal.php") ;
+            include_once("./php/modal.php");
             ?>
         </div>
 
 
-</div>
+    </div>
 
 
 
-</body> 
+</body>
 <script src="./js/js.js"></script>
+
 </html>
