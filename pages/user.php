@@ -1,61 +1,25 @@
 <?php
 require('./php/dbconfig.php');
 $iduser =  $_SESSION['id'];
-$nomadmin = $_SESSION['prenom'];
-
-$iduser = "";
+$nomuser = $_SESSION['prenom'];
 $idart = "";
 
-$selectuser = "";
+//$selectuser = "";
 $selectdevis = "";
 $write = "";
 $total = "";
 
 // recup users avec devis
-$sqlusr = "SELECT id, nom, prenom FROM users WHERE id IN (SELECT id_user FROM devis) ;"; // recup infos client
-$requsr = $conn->prepare($sqlusr);
-$requsr->execute();
-$requsr->bind_result($iduser, $nom, $prenom);
-
-while ($requsr->fetch()) {
-    $selectuser .= "<option value=\"$iduser\">$nom $prenom</option>";
-}
-$requsr->free_result();
-
-
-if (isset($_POST['client'])) {
-    $iduser = $_POST['client'];
-    $selectdevis = "";
-    // recup devis de l'user
-    $sqldevis = "SELECT id, date_devis from devis WHERE id_user = $iduser ;"; // recup infos client
+$sqldevis = "SELECT id, date_devis from devis WHERE id_user = $iduser ;"; // recup infos client
     $reqdevis = $conn->prepare($sqldevis);
     $reqdevis->execute();
     $reqdevis->bind_result($iddevis, $datedevis);
 
-    $selectdevis = '<form class="group-form mt-4 mb-4" method="post">
-                        <div class="row">
-                            <div class="col-4">
-                                <label for="devis">
-                                    <h4 class="text-right">Veuillez choisir un devis</h4>
-                                </label>
-                            </div>
-                            <div class="col">
-                                <select class="form-control w-100" name="devis">';
-
-    while ($reqdevis->fetch()) {
-        $selectdevis .= "<option value=\"$iddevis\">Devis n° $iddevis du $datedevis</option>";
-    }
-
-    $selectdevis .=    '</select>
-                        </div>
-                        <div class="col-3">
-                            <input class="btn btn-success" type="submit" name="submit" value="Go !">
-                        </div>
-                    </div>
-                </form>';
-
-    $reqdevis->free_result();
+while ($reqdevis->fetch()) {
+    $selectdevis .= "<option value=\"$iddevis\">Devis n° $iddevis du $datedevis</option>";
 }
+$reqdevis->free_result();
+
 
 if (isset($_POST['devis'])) {
     $iddevis = $_POST['devis'];
@@ -99,7 +63,12 @@ if (isset($_POST['devis'])) {
     $reqwrite->free_result();
 
     // récup liste options 
-    $sqlwrite = "SELECT options.nom_opt as nom, options.prix as prix, categorie.nom_cat as cat FROM options JOIN categorie ON options.id_cat = categorie.id WHERE options.id IN (SELECT dev_opt.id_opt FROM dev_opt WHERE id_dev = $iddevis) ;"; // recup infos client
+    $sqlwrite = "SELECT options.nom_opt as nom, options.prix as prix, categorie.nom_cat as cat 
+                    FROM options 
+                    JOIN categorie ON options.id_cat = categorie.id 
+                    WHERE options.id IN 
+                    (SELECT dev_opt.id_opt FROM dev_opt WHERE id_dev = $iddevis) ;"; // recup infos client
+    
     $reqwrite = $conn->prepare($sqlwrite);
     $reqwrite->execute();
     $reqwrite->bind_result($nom, $prix, $cat);
@@ -158,18 +127,18 @@ if (isset($_POST['devis'])) {
 
 
 <div class="text-center mt-4 mb-4">
-    <h4><?php echo "Bonjour $nomadmin" ?></h4>
+    <h4><?php echo "Bonjour $nomuser" ?></h4>
 </div>
 <form class="group-form mt-4 mb-4" method="post">
     <div class="row">
         <div class="col-4">
             <label for="client">
-                <h4 class="text-right">Veuillez choisir un client</h4>
+                <h4 class="text-right">Veuillez choisir un devis</h4>
             </label>
         </div>
         <div class="col">
-            <select class="form-control w-100" name="client">
-                <?php echo $selectuser ?>
+            <select class="form-control w-100" name="devis">
+                <?php echo $selectdevis ?>
             </select>
         </div>
         <div class="col-3">
@@ -180,6 +149,5 @@ if (isset($_POST['devis'])) {
 
 <!-- affiche select devis -->
 <?php
-echo $selectdevis;
 echo $write;
 ?>

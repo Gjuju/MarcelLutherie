@@ -90,13 +90,6 @@ $reqarticle = $conn->prepare( $sqlart );
 $reqarticle->bind_param('i', $idproduit);
 $reqarticle->execute();
 $reqarticle->bind_result($desi, $ref, $prix);
-/* $desi = $des;
-$ref = $re;
-$prix = $pri; */
-
-
-/* echo 'part Article : <br>'; 
-echo 'article : id = '. $idproduit .' avec '; */
 
 while ($reqarticle->fetch()) {
     $lignedevis += 1;

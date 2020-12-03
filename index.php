@@ -41,11 +41,12 @@ session_start();
             $bodycontent = ''; // set bodycontent vide au chargement
             $index[1] = "./pages/accueil.php"; // sommaire de la navbar id / pagecontent 
             $index[2] = "./pages/galerie.php";
-            $index[3] = "./pages/chordico.php";
+            /* $index[3] = "./pages/chordico.php"; */
             $index[4] = "./pages/custom.php";
             $index[5] = "./pages/contact.php";
             $index[6] = "./pages/custom-2.php";
-            $index[10] = "./pages/admin.php";
+            $index[10] = "./pages/user.php";
+            $index[99] = "./pages/admin.php";
 
             // vérifie Id de page pour changer modifier class="active" de navbar et charger corps de page. 
             if (!isset($_GET['id'])) { // si href?id unset
@@ -109,8 +110,8 @@ session_start();
         ?>
         <!-- Header avec image -->
         <div class="row">
-            <div class="col-12">
-                <img src="./assets/img/Head.png" class="img-fluid" alt="Responsive image">
+            <div class="col-12 carousel">
+                <img src="./assets/img/Head.png" class="img-fluid" alt="heauder de MLutherie">
                 <div class="carousel-caption">
                     <p class="bighead">Marcel Lutherie</p>
                 </div>
@@ -137,15 +138,21 @@ session_start();
                     <a class="nav-link <?php if ($page == 4) echo 'active'; ?>" href="./index.php?id=4">Custom</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($page == 5) echo 'active'; ?>" href="./index.php?id=5">Contact</a>
+                    <a class="nav-link <?php if ($page == 5 || $page == 6) echo 'active'; ?>" href="./index.php?id=5">Contact</a>
                 </li>
+
                 <?php
-                if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                if (isset($_SESSION['prenom']) && $_SESSION['admin'] == 1) {
                         echo '<li class="nav-item">
-                                <a class="nav-link <?php if ($page == 6) echo \'active\'; ?>" href="./index.php?id=10">Admin</a>
+                                <a class="nav-link <?php if ($page == 99) echo \'active\'; ?>" href="./index.php?id=99">Admin</a>
                             </li>';
-                    } 
-                    ?>
+                } elseif (isset($_SESSION['prenom']) && $_SESSION['admin'] == 0) {
+                        echo '<li class="nav-item">
+                                <a class="nav-link <?php if ($page == 10) echo \'active\'; ?> " href="./index.php?id=10">Utilisateur</a>
+                            </li>';
+                }
+                ?>
+
             </ul>
             <ul class="navbar-nav ml-auto">
                 <!-- Modal login -->
