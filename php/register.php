@@ -73,9 +73,9 @@ if (isset($_POST['regform'])){ // si envoi du formulaire register
         header("Location: ../index.php");
         } 
     
-    } else {
-        // Exécuter la requête sur la base de données
-        //requéte SQL + mot de passe PAS crypté
+        } else {
+            $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+        // Exécuter la requête INSERT sur la base de données
         $requete = "INSERT INTO users (nom, prenom, adresse, email, cp, ville, mdp)
                 VALUES ( '$nom' , '$prenom' , '$adresse' , '$email' , '$cp' , '$ville' , '$mdp')";
         $exec_requete = mysqli_query($conn, $requete);
