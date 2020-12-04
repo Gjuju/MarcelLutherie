@@ -1,6 +1,9 @@
 
 .bighead {
-    font-size: 5em;
-    font-variant-alternates: styleset(alt-a);
-    /*transform: translate(-50%, -50%);*/
+    font-size: 8vw;
+    padding-left: 45%;
+}
+
+.navcss {
+    font-size: 1.25em;
 }
