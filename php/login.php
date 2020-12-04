@@ -7,8 +7,8 @@
         $email = stripslashes($_POST['logemail']);
         $email = mysqli_real_escape_string($conn, $email);
         $password = stripslashes($_POST['logpwd']);
-        $password = mysqli_real_escape_string($conn, $password);
-            $requete = "SELECT id,prenom,admin FROM users WHERE email='".$email."' and mdp='".$password."'";
+        //$password = mysqli_real_escape_string($conn, $password);
+        $requete = "SELECT id,prenom,admin,mdp FROM users WHERE email='".$email."'";
         $exec_requete = mysqli_query($conn,$requete);
         $reponse      = mysqli_fetch_array($exec_requete);
         $count = mysqli_num_rows($exec_requete);
@@ -21,9 +21,14 @@
         $iduser = $reponse['id'];
         $prenom = $reponse['prenom'];
         $admin = $reponse['admin'];
+        $hash = $reponse['mdp'];
+        }
+
+        if (password_verify($password , $hash)) { // on teste le bon
+            $validmail = 1;
         }
         
-        if($count==1){
+        if($count == 1 && $validmail == 1){
             //réussite
             $_SESSION['prenom'] = $prenom;
             $_SESSION['id'] = $iduser;

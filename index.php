@@ -34,7 +34,7 @@ session_start();
     $bodycontent = ''; // set bodycontent vide au chargement
     $index[1] = "./pages/accueil.php"; // sommaire de la navbar id / pagecontent 
     $index[2] = "./pages/galerie.php";
-    /* $index[3] = "./pages/chordico.php"; */
+    //$index[3] = "./pages/updateDB.php";
     $index[4] = "./pages/custom.php";
     $index[5] = "./pages/contact.php";
     $index[6] = "./pages/custom-2.php";
@@ -125,7 +125,7 @@ session_start();
                     <a class="nav-link <?php if ($page == 2) echo 'active'; ?>" href="./index.php?id=2">Galerie</a>
                 </li>
                 <!-- <li class="nav-item">
-                    <a class="nav-link <?php if ($page == 3) echo 'active'; ?>" href="./index.php?id=3">ChorDico</a>
+                    <a class="nav-link <?php if ($page == 3) echo 'active'; ?>" href="./index.php?id=3">updateDB</a>
                 </li> -->
                 <li class="nav-item">
                     <a class="nav-link <?php if ($page == 4) echo 'active'; ?>" href="./index.php?id=4">Custom</a>
