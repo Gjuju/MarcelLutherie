@@ -116,7 +116,7 @@ session_start();
 
 
         <!-- Navbar -->
-        <div class="navbar navbar-expand-sm bg-dark navbar-dark"><a class="navbar-brand" href="?">Marcel Lutherie</a>
+        <div class="navbar navbar-expand-sm bg-dark navbar-dark navcss"><a class="navbar-brand" href="?">Marcel Lutherie</a>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link <?php if ($page == 1) echo 'active'; ?>" href="./index.php?id=1">Accueil</a>

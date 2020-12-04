@@ -4,9 +4,9 @@
     
     require('./dbconfig.php');
     if (isset($_POST['login'])){
-        $email = stripslashes($_REQUEST['logemail']);
+        $email = stripslashes($_POST['logemail']);
         $email = mysqli_real_escape_string($conn, $email);
-        $password = stripslashes($_REQUEST['logpwd']);
+        $password = stripslashes($_POST['logpwd']);
         $password = mysqli_real_escape_string($conn, $password);
             $requete = "SELECT id,prenom,admin FROM users WHERE email='".$email."' and mdp='".$password."'";
         $exec_requete = mysqli_query($conn,$requete);
