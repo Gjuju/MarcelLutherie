@@ -62,150 +62,150 @@ session_start();
 
 </head>
 
-<body>
+<body class="container-fluid">
 
-    <div class="container-fluid">
 
-        <?php
-        /* appel modal inf login etc etc */
-        if ((isset($_SESSION['info'])) && $_SESSION['info'] == 1) {
-            unset($_SESSION['info']);
-        ?>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $("#modinfo").modal("show");
+
+    <?php
+    /* appel modal inf login etc etc */
+    if ((isset($_SESSION['info'])) && $_SESSION['info'] == 1) {
+        unset($_SESSION['info']);
+    ?>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#modinfo").modal("show");
+            });
+        </script>
+    <?php
+
+        /* Appel modal déconnexion */
+    } elseif ((isset($_SESSION['info'])) && $_SESSION['info'] == 2) {
+        //appel modal logout
+    ?>
+        <script type='text/javascript'>
+            $(document).ready(function() {
+                $('#modinfo').modal('show');
+                $('#modinfo').on('hidden.bs.modal', function() {
+                    location.reload();
                 });
-            </script>
+            });
+        </script>
         <?php
-
-            /* Appel modal déconnexion */
-        } elseif ((isset($_SESSION['info'])) && $_SESSION['info'] == 2) {
-            //appel modal logout
+        session_destroy();
         ?>
-            <script type='text/javascript'>
-                $(document).ready(function() {
-                    $('#modinfo').modal('show');
-                    $('#modinfo').on('hidden.bs.modal', function() {
-                        location.reload();
-                    });
-                });
-            </script>
-            <?php
-            session_destroy();
-            ?>
 
-        <?php
-        }
+    <?php
+    }
 
 
 
 
-        ?>
-        <!-- Header avec image -->
-        <div class="row">
-            <div class="col-12 carousel">
-                <img src="./assets/img/Head.png" class="img-fluid" alt="heauder de MLutherie">
-                <div class="carousel-caption">
-                    <p class="bighead">Marcel Lutherie</p>
-                </div>
+    ?>
+    <!-- Header avec image -->
+    <div class="row">
+        <div class="col-12 carousel">
+            <img src="./assets/img/Head.png" class="img-fluid" alt="heauder de MLutherie">
+            <div class="carousel-caption">
+                <p class="bighead">Marcel Lutherie</p>
             </div>
         </div>
+    </div>
 
 
 
 
 
-        <!-- Navbar -->
-        <div class="navbar navbar-expand-sm bg-dark navbar-dark navcss"><a class="navbar-brand" href="?">Marcel Lutherie</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link <?php if ($page == 1) echo 'active'; ?>" href="./index.php?id=1">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php if ($page == 2) echo 'active'; ?>" href="./index.php?id=2">Galerie</a>
-                </li>
-                <!-- <li class="nav-item">
+    <!-- Navbar -->
+    <div class="navbar navbar-expand-sm bg-dark navbar-dark navcss"><a class="navbar-brand" href="?">Marcel Lutherie</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link <?php if ($page == 1) echo 'active'; ?>" href="./index.php?id=1">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php if ($page == 2) echo 'active'; ?>" href="./index.php?id=2">Galerie</a>
+            </li>
+            <!-- <li class="nav-item">
                     <a class="nav-link <?php if ($page == 3) echo 'active'; ?>" href="./index.php?id=3">updateDB</a>
                 </li> -->
-                <li class="nav-item">
-                    <a class="nav-link <?php if ($page == 4) echo 'active'; ?>" href="./index.php?id=4">Custom</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php if ($page == 5 || $page == 6) echo 'active'; ?>" href="./index.php?id=5">Contact</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link <?php if ($page == 4) echo 'active'; ?>" href="./index.php?id=4">Custom</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php if ($page == 5 || $page == 6) echo 'active'; ?>" href="./index.php?id=5">Contact</a>
+            </li>
 
-                <?php
-                if (isset($_SESSION['prenom']) && $_SESSION['admin'] == 1) {
-                ?><li class="nav-item">
-                        <a class="nav-link <?php if ($page == 99) echo 'active'; ?>" href="./index.php?id=99">Admin</a>
-                    </li> <?php
-                        } elseif (isset($_SESSION['prenom']) && $_SESSION['admin'] == 0) {
-                            ?><li class="nav-item">
-                        <a class="nav-link <?php if ($page == 10) echo 'active'; ?>" href="./index.php?id=10">Utilisateur</a>
-                    </li> <?php
-                        }
-                            ?>
-            </ul>
-
-            <ul class="navbar-nav ml-auto">
-                <!-- Modal login -->
-                <li class="nav-item">
-                    <?php
-                    if (!isset($_SESSION['prenom'])) {
-                        echo '<a class="nav-link" id="login" href="#modlogin" data-toggle="modal">Connexion</a>';
-                    } else {
-                        echo '<a class="nav-link" id="logout" href="#modlogout" data-toggle="modal">Déconnexion</a>';
-                    }
-                    ?>
-                </li>
-            </ul>
-        </div>
-
-        <div class="bg">
-            <!-- corps de la page -->
             <?php
-            include_once("$bodycontent");
-            ?>
-        </div>
+            if (isset($_SESSION['prenom']) && $_SESSION['admin'] == 1) {
+            ?><li class="nav-item">
+                    <a class="nav-link <?php if ($page == 99) echo 'active'; ?>" href="./index.php?id=99">Admin</a>
+                </li> <?php
+                    } elseif (isset($_SESSION['prenom']) && $_SESSION['admin'] == 0) {
+                        ?><li class="nav-item">
+                    <a class="nav-link <?php if ($page == 10) echo 'active'; ?>" href="./index.php?id=10">Utilisateur</a>
+                </li> <?php
+                    }
+                        ?>
+        </ul>
 
-        <!-- Footer -->
-        <!-- https://mdbootstrap.com/docs/jquery/navigation/footer/ -->
-        <footer class="page-footer bg-dark text-white pt-4">
-            <div class="container-fluid text-center text-md-left">
-                <div class="row">
-                    <div class="col-8 mt-md-0 mt-4">
-                        <h5 class="text-uppercase">Marcel Lutherie</h5>
-                        <p>20 Place de la maire,</p>
-                        <p>34270 Le triadou</p>
-                    </div>
-                    <hr class="clearfix w-100 d-md-none pb-3">
+        <ul class="navbar-nav ml-auto">
+            <!-- Modal login -->
+            <li class="nav-item">
+                <?php
+                if (!isset($_SESSION['prenom'])) {
+                    echo '<a class="nav-link" id="login" href="#modlogin" data-toggle="modal">Connexion</a>';
+                } else {
+                    echo '<a class="nav-link" id="logout" href="#modlogout" data-toggle="modal">Déconnexion</a>';
+                }
+                ?>
+            </li>
+        </ul>
+    </div>
 
-                    <div class="col-4 mb-md-0 mb-4">
-                        <h5 class="text-uppercase">Liens</h5>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="https://fr.wikipedia.org/wiki/Guitare">La Guitare sur Wikipedia</a>
-                            </li>
-                            <li>
-                                <a href="https://4allmusic.com/selection-luthiers-pays/luthiers-en-france/507-luthiers-guitares-occitanie/600-liste-de-luthiers-guitares-occitanie">Les luthiers d'Occitanie</a>
-                            </li>
-                        </ul>
-                    </div>
+    <div class="bg">
+        <!-- corps de la page -->
+        <?php
+        include_once("$bodycontent");
+        ?>
+    </div>
+
+    <!-- Footer -->
+    <!-- https://mdbootstrap.com/docs/jquery/navigation/footer/ -->
+    <footer class="page-footer bg-dark text-white pt-4">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-8 mt-md-0 mt-4">
+                    <h5 class="text-uppercase">Marcel Lutherie</h5>
+                    <p>20 Place de la maire,</p>
+                    <p>34270 Le triadou</p>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-4 mb-md-0 mb-4">
+                    <h5 class="text-uppercase">Liens</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://fr.wikipedia.org/wiki/Guitare">La Guitare sur Wikipedia</a>
+                        </li>
+                        <li>
+                            <a href="https://4allmusic.com/selection-luthiers-pays/luthiers-en-france/507-luthiers-guitares-occitanie/600-liste-de-luthiers-guitares-occitanie">Les luthiers d'Occitanie</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="footer-copyright text-center py-3">© 2020 Copyright: MarcelLutherie.com</div>
-
-        </footer>
-
-        <div class="container-fluid">
-            <?php
-            include_once("./php/modal.php");
-            ?>
         </div>
 
+        <div class="footer-copyright text-center py-3">© 2020 Copyright: MarcelLutherie.com</div>
 
+    </footer>
+
+    <div class="container-fluid">
+        <?php
+        include_once("./php/modal.php");
+        ?>
     </div>
+
+
+
 
 
 
