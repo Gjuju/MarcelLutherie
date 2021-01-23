@@ -1,9 +1,16 @@
+.container-fluid {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
 
 .bighead {
-    font-size: 5vw;
-    padding-left: 45%;
+  font-size: 5vw;
+  padding-left: 45%;
 }
 
 .navcss {
-    font-size: 1.25em;
+  font-size: 1.25em;
 }
