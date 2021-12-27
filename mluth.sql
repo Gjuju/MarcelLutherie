@@ -442,8 +442,8 @@ INSERT INTO `users` (`id`, `nom`, `prenom`, `email`, `adresse`, `cp`, `ville`, `
 (7, 'Martin', 'Alain', 'alain@gmail.com', '18 rue du pont', '75000', 'Paris', 0, '$2y$10$DLIlKNO.1vGjIHGNWHBe/.myTql1C.kA.3QjT8A/Pg9CMA1g/Iw2q'),
 (12, 'Toto', 'Tata', 'toto@tata.com', '16 av le cours', '13000', 'Mars', 0, '$2y$10$T5RACkcTVxnY8vN1oDtsJO3qHi7CI5.W3rGxlo4T6DxgMT/6saNaG'),
 (14, 'Rob', 'Carmet', 'rob@carmet.com', '55 av de la libé', '84000', 'Avignon', 0, '$2y$10$d3iYOQVd0zY2ejsVfHR.ZuOFIv3yjHV4x.MGHSsYU0QtOH0hNg8/u'),
-(16, 'Gainza', 'Julien', 'tminik2@gmail.com', '17 Rue du grenache', '34270', 'Le Triadou', 0, '$2y$10$qrizb4V6d9ROBSvVds1x2..MtuHpbiTo.GUOj1okhnEVdsmT9QQvG'),
-(18, 'Castro', 'Fidel', 'fidel@castro.com', '66 rue des démocrates', '48', 'La Havane', 0, '$2y$10$UQIQu20xoVJviR/uYAe9X.Uc89DMADXUHZqPykkFETTL91MFZCfp6');
+(16, 'Gainza', 'Julien', 'julien@gainza.com', '17 Rue de la montagne', '34270', 'Le Triadou', 0, '$2y$10$qrizb4V6d9ROBSvVds1x2..MtuHpbiTo.GUOj1okhnEVdsmT9QQvG'),
+(18, 'Castro', 'Fidel', 'fidel@castro.com', '66 rue de la démocratie', '48', 'La Havane', 0, '$2y$10$UQIQu20xoVJviR/uYAe9X.Uc89DMADXUHZqPykkFETTL91MFZCfp6');
 
 --
 -- Index pour les tables déchargées
