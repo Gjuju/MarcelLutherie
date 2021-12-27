@@ -48,7 +48,15 @@ if (!isset($_POST["produit"])) {
 
 } else {
     $_SESSION['produit'] = $_POST['produit'];
-    header("Location: ./index.php?id=6"); 
+    // header("Location: ../index.php?id=6"); 
+    
+    
+    echo '<script language="Javascript">
+    <!--
+    document.location.replace("../index.php?id=6");
+    // -->
+    </script>';
+    
 
 }
 ?>

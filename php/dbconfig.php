@@ -1,8 +1,8 @@
 <?php
 // Informations d'identification
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_USERNAME', 'mluth');
+define('DB_PASSWORD', 'mluth');
 define('DB_NAME', 'mluth');
 define('DB_PORT', '3306');
 

@@ -32,7 +32,7 @@ session_start();
     //$index[3] = "./pages/updateDB.php";
     $index[4] = "./pages/custom.php";
     $index[5] = "./pages/contact.php";
-    $index[6] = "./pages/custom-2.php";
+    $index[6] = "./pages/custom2.php";
     $index[10] = "./pages/user.php";
     $index[99] = "./pages/admin.php";
 
